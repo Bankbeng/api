@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
 
+const cors = require("cors");
+
+app.use(cors({
+  origin: "http://localhost:3001", // Your Next.js URL
+  credentials: true
+}));
+
 // ADD THESE TWO LINES - This tells Express to parse JSON from requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
