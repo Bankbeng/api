@@ -22,7 +22,7 @@ Category.create = (newCategory, callback) => {
 
 Category.findById = (id, callback) => {
   sql.query(
-    "SELECT * FROM category WHERE id = ? AND is_deleted = false",
+    "SELECT * FROM category WHERE cat_id = ? AND is_deleted = false",
     id,
     callback
   );
@@ -30,7 +30,7 @@ Category.findById = (id, callback) => {
 
 Category.updateById = (id, category, callback) => {
   sql.query(
-    "UPDATE category SET cat_name = ?, is_deleted = ? WHERE id = ?",
+    "UPDATE category SET cat_name = ?, is_deleted = ? WHERE cat_id = ?",
     [category.cat_name, category.is_deleted, id],
     (err, res) => {
       if (err) {
@@ -48,7 +48,7 @@ Category.updateById = (id, category, callback) => {
 
 Category.remove = (id, callback) => {
   sql.query(
-    "UPDATE category SET is_deleted = true WHERE id = ?",
+    "UPDATE category SET is_deleted = true WHERE cat_id = ?",
     id,
     (err, res) => {
       if (err) {
