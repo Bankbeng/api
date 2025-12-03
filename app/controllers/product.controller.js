@@ -30,7 +30,6 @@ exports.findOne = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  // UPDATE VALIDATION - image is optional
   if (!req.body.name || !req.body.price || !req.body.cat_id) {
     res.status(400).send({
       message: "Product name, price, and category ID are required!"
@@ -38,12 +37,11 @@ exports.create = (req, res) => {
     return;
   }
 
-  // CREATE PRODUCT - include image (can be null/empty)
   const product = new Product({
     name: req.body.name,
     price: req.body.price,
     cat_id: req.body.cat_id,
-    image: req.body.image || null  // ADD THIS - default to null if not provided
+    image: req.body.image || null
   });
 
   Product.create(product, (err, data) => {
@@ -65,12 +63,11 @@ exports.update = (req, res) => {
     return;
   }
 
-  // UPDATE PRODUCT - include image
   const product = new Product({
     name: req.body.name,
     price: req.body.price,
     cat_id: req.body.cat_id,
-    image: req.body.image || null  // ADD THIS
+    image: req.body.image || null
   });
 
   Product.updateById(req.params.id, product, (err, data) => {

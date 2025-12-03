@@ -4,7 +4,7 @@ const Product = function (product) {
   this.name = product.name;
   this.price = product.price;
   this.cat_id = product.cat_id;
-  this.image = product.image; // ADD THIS LINE
+  this.image = product.image;
 };
 
 Product.getAll = (callback) => {
@@ -15,7 +15,6 @@ Product.getAll = (callback) => {
 };
 
 Product.create = (newProduct, callback) => {
-  // UPDATE THIS - add image to INSERT
   sql.query(
     "INSERT INTO products (name, price, cat_id, image) VALUES (?, ?, ?, ?)",
     [newProduct.name, newProduct.price, newProduct.cat_id, newProduct.image],
@@ -32,7 +31,6 @@ Product.findById = (id, callback) => {
 };
 
 Product.updateById = (id, product, callback) => {
-  // UPDATE THIS - add image to UPDATE
   sql.query(
     "UPDATE products SET name = ?, price = ?, cat_id = ?, image = ? WHERE id = ?",
     [product.name, product.price, product.cat_id, product.image, id],
