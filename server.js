@@ -43,7 +43,8 @@ app.get("/", (req, res) => {
 // This function receives the app and registers routes to it
 require("./app/routes/product.route.js")(app);
 // Load all category-related routes (GET /categories, POST /categories, etc.)
-require("./app/routes/category.route")(app);
+require("./app/routes/category.route.js")(app);
+require("./app/routes/user.route.js")(app);
 
 // Set the port for the server to listen on
 // If PORT environment variable is set, use it; otherwise use port 3000

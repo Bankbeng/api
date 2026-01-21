@@ -7,16 +7,14 @@
 
 // Import MySQL library for Node.js
 const mysql = require("mysql");
-// Import database credentials from config file
-const dbConfig = require("../config/db.config");
 
 // Create a MySQL connection using the credentials from config
 // This stores the connection but doesn't connect yet
 const connection = mysql.createConnection({
-  host: dbConfig.HOST,          // Server location
-  user: dbConfig.USER,          // Database username
-  password: dbConfig.PASSWORD,  // Database password
-  database: dbConfig.DB         // Database name to use
+  host: process.env.HOST,          // Server location
+  user: process.env.USER,          // Database username
+  password: process.env.PASSWORD,  // Database password
+  database: process.env.DB         // Database name to use
 });
 
 // Attempt to connect to the database
